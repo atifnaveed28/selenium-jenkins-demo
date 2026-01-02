@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/selenium-jenkins-demo.git'
+                git 'https://github.com/atifnaveed28/selenium-jenkins-demo'
             }
         }
 
@@ -16,17 +16,17 @@ pipeline {
 
         stage('Run Selenium Tests') {
             steps {
-                sh 'pytest'
+                sh 'pytest tests/test_login.py'
             }
         }
     }
 
     post {
         success {
-            echo 'Login test passed'
+            echo 'Selenium tests passed!'
         }
         failure {
-            echo 'Login test failed'
+            echo 'Selenium tests failed!'
         }
     }
 }
