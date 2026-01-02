@@ -1,22 +1,22 @@
 pipeline {
     agent any
-
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/atifnaveed28/selenium-jenkins-demo'
+                git branch: 'main',
+                    url: 'https://github.com/atifnaveed28/selenium-jenkins-demo.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Selenium Tests') {
             steps {
-                sh 'pytest tests/test_login.py'
+                bat 'pytest tests/test_login.py'
             }
         }
     }
